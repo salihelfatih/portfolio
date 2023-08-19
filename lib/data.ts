@@ -37,10 +37,10 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Front-End Developer Co-op",
+    title: "IT Operations Co-op Student",
     location: "Barrie, ON",
     description:
-      "I worked as a front-end developer for a Hydro One. I worked on a project that involved JavaScript, HTML, and CSS.",
+      "Revamped user experience with dynamic frontend development using JavaScript, HTML, and CSS, boosting engagement and usability.",
     icon: React.createElement(CgWorkAlt),
     date: "2021 -2022",
   },
