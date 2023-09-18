@@ -37,28 +37,12 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Web Designer",
-    location: "Omdurman, Sudan",
-    description:
-      "I started my career as a web designer. I designed and developed websites for Ahfad University and small businesses using HTML, CSS, JavaScript, and WordPress.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2016 - 2020",
-  },
-  {
-    title: "Started Mohawk College",
+    title: "Full-Stack Developer",
     location: "Hamilton, ON",
     description:
-      "I studied Data Structures and Algorithms, Object-Oriented Programming, Web Development, and Databases.",
-    icon: React.createElement(LuGraduationCap),
-    date: "2020",
-  },
-  {
-    title: "Frontend Developer Co-op",
-    location: "Barrie, ON",
-    description:
-      "Revamped user experience with dynamic frontend development using JavaScript, HTML, and CSS, boosting engagement and usability.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2021",
+      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, ASP.NET, PostgreSQL, MongoDB, Tailwind, and Material UI. I'm open to full-time opportunities.",
+    icon: React.createElement(FaReact),
+    date: "2023 - present",
   },
   {
     title: "Full Stack Developer Co-op",
@@ -69,12 +53,28 @@ export const experiencesData = [
     date: "2022",
   },
   {
-    title: "Full-Stack Developer",
+    title: "Frontend Developer Co-op",
+    location: "Barrie, ON",
+    description:
+      "Revamped user experience with dynamic frontend development using JavaScript, HTML, and CSS, boosting engagement and usability.",
+    icon: React.createElement(CgWorkAlt),
+    date: "2021",
+  },
+  {
+    title: "Started Mohawk College",
     location: "Hamilton, ON",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, ASP.NET, PostgreSQL, MongoDB, Tailwind, and Material UI. I'm open to full-time opportunities.",
-    icon: React.createElement(FaReact),
-    date: "2023 - present",
+      "I studied Data Structures and Algorithms, Object-Oriented Programming, Web Development, and Databases.",
+    icon: React.createElement(LuGraduationCap),
+    date: "2020",
+  },
+  {
+    title: "Web Designer",
+    location: "Omdurman, Sudan",
+    description:
+      "I started my career as a web designer. I designed and developed websites for Ahfad University and small businesses using HTML, CSS, JavaScript, and WordPress.",
+    icon: React.createElement(CgWorkAlt),
+    date: "2016 - 2020",
   },
 ] as const;
 
@@ -127,9 +127,10 @@ export const skillsData = [
   "JavaScript",
   "TypeScript",
   "React",
-  "Next.js",
-  "Vue.js",
-  "Node.js",
+  "Next",
+  "Vue",
+  "Angular",
+  "Node",
   "Express",
   "Python",
   "Django",

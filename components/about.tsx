@@ -21,7 +21,7 @@ export default function About() {
       <p className="mb-3">
         I hold a Bachelor's degree in{" "}
         <span className="font-medium">Painting</span>, but my curiosity led me
-        to programming. After completing Mohawk College's Software Development
+        to programming. While completing Mohawk College's Software Development
         program, I mastered{" "}
         <span className="font-medium">full-stack web development</span>.{" "}
         <span className="italic">
@@ -30,9 +30,9 @@ export default function About() {
           innovative solutions to complex problems.
         </span>{" "}
         <span className="font-medium">
-          My go-to tools are React, ASP.NET, and PostgreSQL
+          My go-to tools are React, ASP.NET, and PostgreSQL.
         </span>
-        . I am also familiar with TypeScript and MongoDB. and I'm keen to learn
+        I am also familiar with TypeScript and MongoDB and I'm keen to learn
         more. I am currently looking for a{" "}
         <span className="font-medium">full-time position</span> as a software
         developer.
@@ -40,9 +40,8 @@ export default function About() {
       <p></p>
       <p>
         <span className="italic">When I'm not coding</span>, I find joy in
-        gaming, movies, and my cat, exploring{" "}
-        <span className="font-medium">nature and philosophy</span>, and guitar
-        playing round out my interests.{" "}
+        art, music, film, exploring{" "}
+        <span className="font-medium">nature and philosophy</span>.{" "}
       </p>
     </motion.section>
   );
