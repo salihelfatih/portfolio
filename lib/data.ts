@@ -45,14 +45,6 @@ export const experiencesData = [
     date: "2023 - present",
   },
   {
-    title: "Full Stack Developer Co-op",
-    location: "Hamilton, ON",
-    description:
-      "Developed backend services using C#, ASP.NET, and PostgreSQL, improving the performance of the application.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2022",
-  },
-  {
     title: "Frontend Developer Co-op",
     location: "Barrie, ON",
     description:
