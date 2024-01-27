@@ -30,10 +30,9 @@ export default function About() {
           innovative solutions to complex problems.
         </span>{" "}
         <span className="font-medium">
-          My go-to tools are React, ASP.NET, and PostgreSQL.
+          My go-to tools are React, ASP.NET, and PostgreSQL.{" "}
         </span>
-        I am also familiar with TypeScript and MongoDB and I'm keen to learn
-        more. I am currently looking for a{" "}
+        I am currently looking for a{" "}
         <span className="font-medium">full-time position</span> as a software
         developer.
       </p>

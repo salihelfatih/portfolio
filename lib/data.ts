@@ -37,36 +37,58 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Full-Stack Developer",
-    location: "Hamilton, ON",
-    description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, ASP.NET, PostgreSQL, MongoDB, Tailwind, and Material UI. I'm open to full-time opportunities.",
-    icon: React.createElement(FaReact),
-    date: "2023 - present",
-  },
-  {
-    title: "Frontend Developer Co-op",
-    location: "Barrie, ON",
-    description:
-      "Revamped user experience with dynamic frontend development using JavaScript, HTML, and CSS, boosting engagement and usability.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2021",
-  },
-  {
-    title: "Started Mohawk College",
+    title: "Graduated Mohawk College",
+    company: "",
     location: "Hamilton, ON",
     description:
       "I studied Data Structures and Algorithms, Object-Oriented Programming, Web Development, and Databases.",
     icon: React.createElement(LuGraduationCap),
-    date: "2020",
+    date: "Jun 2023",
   },
   {
-    title: "Web Designer",
-    location: "Omdurman, Sudan",
+    title: "Frontend Developer",
+    company: "HIEM Energy",
+    location: "Burnaby, BC",
     description:
-      "I started my career as a web designer. I designed and developed websites for Ahfad University and small businesses using HTML, CSS, JavaScript, and WordPress.",
+      "I'm developing web applications using React, Next, TypeScript, and Tailwind.",
+    icon: React.createElement(FaReact),
+    date: "Jan 2023 - present",
+  },
+  {
+    title: "Full-Stack Developer Co-op",
+    company: "Direct Message",
+    location: "Hamilton, ON",
+    description:
+      "I developed an eLearning web application using React, MUI, ASP.NET, and PostgreSQL.",
     icon: React.createElement(CgWorkAlt),
-    date: "2016 - 2020",
+    date: "May - Aug 2022",
+  },
+  {
+    title: "Full-Stack Developer Intern",
+    company: "Boardwalk Insurance",
+    location: "Vaughan, ON",
+    description:
+      "I developed an application building platform using React, MUI, ASP.NET, and PostgreSQL.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Jan - Apr 2022",
+  },
+  {
+    title: "Frontend Developer Co-op",
+    company: "Hydro One",
+    location: "Barrie, ON",
+    description:
+      "Revamped user experience with dynamic frontend development using JavaScript, HTML, and CSS, boosting engagement and usability.",
+    icon: React.createElement(CgWorkAlt),
+    date: "May - Dec 2021",
+  },
+  {
+    title: "Full-Stack Developer Intern",
+    company: "Corald Networks",
+    location: "Toronto, ON",
+    description:
+      "I developed a media broadcaster web app using Vue, Vuetify, Express, and PostgreSQL.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Jan - Apr 2021",
   },
 ] as const;
 
@@ -77,7 +99,7 @@ export const projectsData = [
       "An e-commerce platform for users to buy and sell homemade goods. It has a product page, a cart page and a checkout page.",
     tags: ["React", "ASP.NET", "PostgreSQL", "Docker", "Material UI"],
     imageUrl: homemadeGoodies,
-    link: "https://homemadegoodies.netlify.app/",
+    link: "https://github.com/orgs/homemadegoodies/repositories",
   },
   {
     title: "Digital Fuse",
@@ -85,31 +107,15 @@ export const projectsData = [
       "An e-learning platform for students to learn about technology. It has a course builder, a quiz builder and a forum.",
     tags: ["React", "ASP.NET", "PostgreSQL", "Docker", "Material UI"],
     imageUrl: digitalFuse,
-    link: "https://digitalfuse.netlify.app/",
+    link: "https://github.com/orgs/digitalfusee/repositories",
   },
   {
-    title: "Survey Forge",
+    title: "Application Building Platform",
     description:
       "A survey builder for users to create surveys and collect responses. It has a survey builder, a response viewer and a dashboard.",
     tags: ["React", "ASP.NET", "PostgreSQL", "Docker", "Material UI"],
     imageUrl: surveyForge,
-    link: "https://abp-demo.netlify.app/",
-  },
-  {
-    title: "Suda Date",
-    description:
-      "A dating app for the Sudanese diaspora. It has a swipe feature, a chat feature and a profile feature.",
-    tags: ["React Native", "MongoDB", "Prisma", "Tailwind", "Framer Motion"],
-    imageUrl: sudaDate,
-    link: "https://suda-date.vercel.app/",
-  },
-  {
-    title: "Rise Up",
-    description:
-      "A social media app for users to share their positive stories. It has a feed, a profile page and a chat feature.",
-    tags: ["Next.js", "MongoDB", "Prisma", "Tailwind", "Framer Motion"],
-    imageUrl: riseUp,
-    link: "https://rise-up.vercel.app/",
+    link: "https://github.com/orgs/boardwalkabp/repositories",
   },
 ] as const;
 
@@ -135,15 +141,13 @@ export const skillsData = [
   "PostgreSQL",
   "MySQL",
   "SQLite",
-  "Firebase",
   "MongoDB",
+  "Firebase",
   "Prisma",
   "GraphQL",
-  "Apollo",
   "Tailwind",
   "Material UI",
   "Sass",
-  "Framer Motion",
   "Git",
   "Docker",
 ] as const;
