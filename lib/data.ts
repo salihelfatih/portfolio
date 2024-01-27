@@ -46,11 +46,10 @@ export const experiencesData = [
     date: "Jun 2023",
   },
   {
-    title: "Frontend Developer",
+    title: "Full Stack Developer",
     company: "HIEM Energy",
     location: "Burnaby, BC",
-    description:
-      "I'm developing web applications using React, Next, TypeScript, and Tailwind.",
+    description: "Developed web apps with product catalogs, secure payments, and user authentication. Managed databases, collaborated for feature development, and optimized performance. Maintained APIs for seamless data exchange.",
     icon: React.createElement(FaReact),
     date: "Jan 2023 - present",
   },
@@ -59,7 +58,7 @@ export const experiencesData = [
     company: "Direct Message",
     location: "Hamilton, ON",
     description:
-      "I developed an eLearning web application using React, MUI, ASP.NET, and PostgreSQL.",
+      "Created a top-notch platform with an intuitive interface and dynamic gamification for optimal user engagement and knowledge retention.",
     icon: React.createElement(CgWorkAlt),
     date: "May - Aug 2022",
   },
@@ -68,7 +67,7 @@ export const experiencesData = [
     company: "Boardwalk Insurance",
     location: "Vaughan, ON",
     description:
-      "I developed an application building platform using React, MUI, ASP.NET, and PostgreSQL.",
+      "Led team to develop an advanced prototype, enhancing user experience through intuitive features. Managed GIT repositories for better teamwork and version control.",
     icon: React.createElement(CgWorkAlt),
     date: "Jan - Apr 2022",
   },
@@ -77,16 +76,16 @@ export const experiencesData = [
     company: "Hydro One",
     location: "Barrie, ON",
     description:
-      "Revamped user experience with dynamic frontend development using JavaScript, HTML, and CSS, boosting engagement and usability.",
+      "Revamped user experience through dynamic frontend development with JavaScript, HTML, and CSS. Streamlined website management, optimized navigation, and executed designs for seamless functionality.",
     icon: React.createElement(CgWorkAlt),
     date: "May - Dec 2021",
   },
   {
-    title: "Full-Stack Developer Intern",
+    title: "Frontend Developer Intern",
     company: "Corald Networks",
     location: "Toronto, ON",
     description:
-      "I developed a media broadcaster web app using Vue, Vuetify, Express, and PostgreSQL.",
+      "Collaborated on a media broadcaster web app. Specialized in image upload, prioritized user-centric features, and conducted thorough code reviews for a robust application.",
     icon: React.createElement(CgWorkAlt),
     date: "Jan - Apr 2021",
   },
