@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --input-bg: #ffffff;
+  --input-text: #000000;
+  --input-border: #e5e7eb;
+  --input-placeholder: #9ca3af;
+}
+
+.dark {
+  --input-bg: #1c1c22;
+  --input-text: #ffffff;
+  --input-border: #374151;
+  --input-placeholder: #6b7280;
+}
+
+@layer base {
+  body {
+    @apply font-primary leading-loose transition-colors duration-300;
+  }
+
+  /* Dark mode styles */
+  .dark {
+    background-color: #1c1c22; /* primary color */
+    color: #ffffff;
+  }
+
+  /* Light mode styles */
+  .light {
+    background-color: #e2e8f0;
+    color: #000000;
+  }
+
+  .h1 {
+    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
+  }
+  .h2 {
+    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
+  }
+  .h3 {
+    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+  }
+  .text-outline {
+    -webkit-text-stroke: 1px #ffffff;
+  }
+
+  .text-outline-hover {
+    -webkit-text-stroke: 1px #6366f1;
+  }
+
+  /* Adjust accent color for better visibility in light mode */
+  .light .text-accent {
+    color: #4f46e5; /* accent-hover color */
+  }
+
+  /* Prevent autofill from changing background color */
+  .prevent-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  .prevent-autofill:-webkit-autofill,
+  .prevent-autofill:-webkit-autofill:hover,
+  .prevent-autofill:-webkit-autofill:focus,
+  .prevent-autofill:-webkit-autofill:active {
+    -webkit-text-fill-color: inherit !important;
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  }
+}
+
+/* Additional styles for ensuring text visibility */
+@layer utilities {
+  .dark .force-white {
+    color: #ffffff !important;
+  }
+
+  .light .force-black {
+    color: #000000 !important;
+  }
+}
+
+.custom-input {
+  background-color: var(--input-bg) !important;
+  color: var(--input-text) !important;
+  border-color: var(--input-border) !important;
+}
+
+.custom-input::placeholder {
+  color: var(--input-placeholder) !important;
+}
+
+/* Styles for autofilled inputs */
+.custom-input:-webkit-autofill,
+.custom-input:-webkit-autofill:hover,
+.custom-input:-webkit-autofill:focus,
+.custom-input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--input-text) !important;
+  -webkit-box-shadow: 0 0 0 30px var(--input-bg) inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
