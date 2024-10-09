@@ -16,34 +16,64 @@ import Image from "next/image";
 const projects = [
   {
     num: "01",
+    category: "frontend",
+    title: "Radio Deeshak",
+    description:
+      "A radio streaming website featuring a sleek design, easy navigation, and a variety of radio stations to choose from.",
+    stack: [
+      { name: "Next.js" },
+      { name: "Tailwind CSS" },
+      { name: "TypeScript" },
+    ],
+    image: "/assets/work/project1.png",
+    live: "https://deeshak.com/",
+    github: "https://github.com/orgs/radioDeeshak/repositories",
+  },
+  {
+    num: "02",
+    category: "Content management system",
+    title: "Nabeel Barber Shop",
+    description:
+      "A modern and responsive website for a barber shop, featuring a clean design, easy navigation, and a booking system.",
+    stack: [
+      { name: "WordPress" },
+      { name: "Elementor" },
+      { name: "WooCommerce" },
+    ],
+    image: "/assets/work/project2.png",
+    live: "https://nabeelbarber.shop/",
+    github: "https://github.com/orgs/nabeelbarbershop/repositories",
+  },
+  {
+    num: "03",
     category: "fullstack",
     title: "Homemade Goodies",
     description:
       "An e-commerce platform for buying and selling delicious homemade goods, featuring a seamless product page, easy-to-use cart, and secure checkout.",
     stack: [{ name: "ASP.NET" }, { name: "React" }, { name: "PostgreSQL" }],
-    image: "/assets/work/thumb1.png",
+    image: "/assets/work/project3.png",
     live: "https://homemadegoodies.netlify.app/",
     github: "https://github.com/orgs/homemadegoodies/repositories",
   },
   {
-    num: "02",
+    num: "04",
     category: "fullstack",
     title: "Digital Fuse",
     description:
       "An e-learning platform where students can explore technology, featuring a course builder, quiz builder, and interactive forum.",
     stack: [{ name: "ASP.NET" }, { name: "React" }, { name: "PostgreSQL" }],
-    image: "/assets/work/thumb2.png",
+    image: "/assets/work/project4.png",
     live: "http://digitalfuse.netlify.app",
     github: "https://github.com/orgs/digitalfusee/repositories",
   },
   {
-    num: "03",
+    num: "05",
     category: "fullstack",
     title: "Application Building Platform",
     description:
       "A survey builder for creating surveys and collecting responses, with features like a survey builder, response viewer, and intuitive dashboard.",
     stack: [{ name: "ASP.NET" }, { name: "React" }, { name: "PostgreSQL" }],
-    image: "/assets/work/thumb3.png",
+    image: "/assets/work/project5.png",
     live: "http://abp-demo.netlify.app",
     github: "https://github.com/orgs/boardwalkabp/repositories",
   },

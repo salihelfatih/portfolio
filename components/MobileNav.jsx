@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { CiMenuFries } from "react-icons/ci";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const MobileNav = () => {
   const router = useRouter();
@@ -22,7 +24,7 @@ const MobileNav = () => {
       </SheetTrigger>
       <SheetContent className="flex flex-col bg-[#f1f5f9] dark:bg-[#232329]">
         {/* logo */}
-        <div className="mt-32 mb-40 text-center text-2xl">
+        <div className="mt-32 mb-20 text-center text-2xl">
           <button
             onClick={() => handleClick("/")}
             className="text-4xl font-semibold text-accent dark:text-accent-dark"
@@ -53,6 +55,18 @@ const MobileNav = () => {
             </button>
           ))}
         </nav>
+        {/* Sakia Labs button */}
+        <div className="mt-8 flex justify-center">
+          <Link
+            href="https://sakialabs.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button className="bg-accent text-white hover:bg-accent/90 transition-colors">
+              Sakia Labs
+            </Button>
+          </Link>
+        </div>
       </SheetContent>
     </Sheet>
   );
