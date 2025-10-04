@@ -50,7 +50,7 @@ const Header = () => {
             <div className="hidden xl:flex items-center gap-8">
               <Nav />
               <Magnetic>
-                <Link target="_blank" href="https://sakialabs.io">
+                <Link target="_blank" href="https://sakia.vercel.app">
                   <Button className="bg-accent text-white hover:bg-accent/90 transition-colors">
                     Sakia Labs
                   </Button>
