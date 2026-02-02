@@ -25,10 +25,10 @@ export default function AboutProfile() {
         About Me
       </h2>
       <p className="text-base sm:text-lg text-black/70 dark:text-white/70 leading-relaxed mb-4">
-        I'm a full-stack developer with a background in visual arts and software development. I build end-to-end systems that balance technical clarity, usability, and long-term maintainability.
+        I&apos;m a full-stack developer with a background in visual arts and software development. I build end-to-end systems that balance technical clarity, usability, and long-term maintainability.
       </p>
       <p className="text-base sm:text-lg text-black/70 dark:text-white/70 leading-relaxed">
-        These days, I'm focused on building accessible, user-centered products and applying AI and automation where they genuinely reduce friction. I care about clean abstractions, thoughtful trade-offs, and code that holds up as systems grow.
+        These days, I&apos;m focused on building accessible, user-centered products and applying AI and automation where they genuinely reduce friction. I care about clean abstractions, thoughtful trade-offs, and code that holds up as systems grow.
       </p>
     </div>
   );
