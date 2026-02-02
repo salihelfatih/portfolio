@@ -7,6 +7,9 @@
   --input-text: #000000;
   --input-border: #e5e7eb;
   --input-placeholder: #9ca3af;
+  --toast-bg: #f1f5f9;
+  --toast-text: #000000;
+  --toast-border: #e2e8f0;
 }
 
 .dark {
@@ -14,6 +17,9 @@
   --input-text: #ffffff;
   --input-border: #374151;
   --input-placeholder: #6b7280;
+  --toast-bg: #232329;
+  --toast-text: #ffffff;
+  --toast-border: #27272c;
 }
 
 @layer base {
@@ -34,13 +40,13 @@
   }
 
   .h1 {
-    @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
+    @apply text-[36px] sm:text-[42px] md:text-[50px] lg:text-[58px] xl:text-[66px] leading-[1.1] font-semibold;
   }
   .h2 {
-    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
+    @apply text-[28px] sm:text-[36px] md:text-[40px] lg:text-[44px] xl:text-[48px] leading-[1.1] font-semibold;
   }
   .h3 {
-    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+    @apply text-[18px] sm:text-[20px] md:text-[22px] xl:text-[24px] leading-[1.1] font-semibold;
   }
   .text-outline {
     -webkit-text-stroke: 1px #ffffff;

@@ -1,222 +1,253 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState } from "react";
-import { BsArrowUpRight, BsGithub } from "react-icons/bs";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-import Link from "next/link";
-import Image from "next/image";
-
-const projects = [
-  {
-    num: "01",
-    category: "frontend",
-    title: "Radio Deeshak",
-    description:
-      "A radio streaming website featuring a sleek design, easy navigation, and a variety of radio stations to choose from.",
-    stack: [
-      { name: "Next.js" },
-      { name: "Tailwind CSS" },
-      { name: "TypeScript" },
-    ],
-    image: "/assets/work/project1.png",
-    live: "https://deeshak.com/",
-    github: "https://github.com/orgs/radioDeeshak/repositories",
-  },
-  {
-    num: "02",
-    category: "Content management system",
-    title: "Nabeel Barber Shop",
-    description:
-      "A modern and responsive website for a barber shop, featuring a clean design, easy navigation, and a booking system.",
-    stack: [
-      { name: "WordPress" },
-      { name: "Elementor" },
-      { name: "WooCommerce" },
-    ],
-    image: "/assets/work/project2.png",
-    live: "https://nabeelbarber.shop/",
-    github: "https://github.com/orgs/nabeelbarbershop/repositories",
-  },
-  {
-    num: "03",
-    category: "fullstack",
-    title: "Homemade Goodies",
-    description:
-      "An e-commerce platform for buying and selling delicious homemade goods, featuring a seamless product page, easy-to-use cart, and secure checkout.",
-    stack: [{ name: "ASP.NET" }, { name: "React" }, { name: "PostgreSQL" }],
-    image: "/assets/work/project3.png",
-    live: "https://homemadegoodies.netlify.app/",
-    github: "https://github.com/orgs/homemadegoodies/repositories",
-  },
-  {
-    num: "04",
-    category: "fullstack",
-    title: "Digital Fuse",
-    description:
-      "An e-learning platform where students can explore technology, featuring a course builder, quiz builder, and interactive forum.",
-    stack: [{ name: "ASP.NET" }, { name: "React" }, { name: "PostgreSQL" }],
-    image: "/assets/work/project4.png",
-    live: "http://digitalfuse.netlify.app",
-    github: "https://github.com/orgs/digitalfusee/repositories",
-  },
-  {
-    num: "05",
-    category: "fullstack",
-    title: "Application Building Platform",
-    description:
-      "A survey builder for creating surveys and collecting responses, with features like a survey builder, response viewer, and intuitive dashboard.",
-    stack: [{ name: "ASP.NET" }, { name: "React" }, { name: "PostgreSQL" }],
-    image: "/assets/work/project5.png",
-    live: "http://abp-demo.netlify.app",
-    github: "https://github.com/orgs/boardwalkabp/repositories",
-  },
-];
+import React, { useState, useEffect } from "react";
+import ProjectSection from "@/components/features/projects/ProjectSection";
+import CategoryFilter from "@/components/features/projects/CategoryFilter";
+import { projects } from "@/lib/data";
+import { Button } from "@/components/ui/button";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const Work = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  // State for managing active category filter and current project
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [direction, setDirection] = useState(0); // For animation direction
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  
+  // Updated categories with new names
+  const categories = ['Community & Solidarity', 'AI & ML', 'Money & Work', 'Tools & Experiments'];
 
-  const project = projects[currentIndex];
+  // Filter projects by category if filter is active
+  const filteredProjects = activeCategory
+    ? projects.filter(project => project.category === activeCategory)
+    : projects;
 
-  const nextProject = () => {
+  // Reset current index when filter changes
+  useEffect(() => {
+    setCurrentProjectIndex(0);
+  }, [activeCategory]);
+
+  // Navigate to next project
+  const handleNext = () => {
     setDirection(1);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
+    setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length);
   };
 
-  const prevProject = () => {
+  // Navigate to previous project
+  const handlePrevious = () => {
     setDirection(-1);
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + projects.length) % projects.length
+    setCurrentProjectIndex((prev) => 
+      prev === 0 ? filteredProjects.length - 1 : prev - 1
     );
   };
 
-  if (!project) {
-    return <div>Loading...</div>;
-  }
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowLeft") {
+        setDirection(-1);
+        setCurrentProjectIndex((prev) => 
+          prev === 0 ? filteredProjects.length - 1 : prev - 1
+        );
+      } else if (e.key === "ArrowRight") {
+        setDirection(1);
+        setCurrentProjectIndex((prev) => (prev + 1) % filteredProjects.length);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [filteredProjects.length]);
+
+  // Touch handlers for swipe gestures
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrevious();
+    }
+
+    // Reset
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
+
+  // Animation variants for smooth transitions
+  const variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      x: direction > 0 ? -1000 : 1000,
+      opacity: 0,
+    }),
+  };
 
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
+        transition: { delay: 0.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="min-h-[80vh] flex flex-col justify-center py-12 xl:px-0"
+      className="flex flex-col overflow-hidden py-6"
     >
-      <div className="container mx-auto">
-        <div className="flex flex-col xl:flex-row xl:gap-[30px]">
-          <div className="w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none">
-            <div className="flex flex-col gap-[30px] h-[50%]">
-              <div className="text-8xl leading-none font-extrabold force-black dark:force-white">
-                {project.num}
-              </div>
-              <h2 className="text-[42px] font-bold leading-none text-black dark:text-white group-hover:text-accent transition-all duration-500 capitalize">
-                {project.category} project
-              </h2>
-              <p className="text-black/60 dark:text-white/60">
-                {project.description}
-              </p>
-              <ul className="flex gap-4">
-                {project.stack.map((item, index) => (
-                  <li key={index} className="text-xl text-accent">
-                    {item.name}
-                    {index !== project.stack.length - 1 && ","}
-                  </li>
-                ))}
-              </ul>
-              <div className="border border-black/20 dark:border-white/20"></div>
-              <div className="flex items-center gap-4">
-                <Link
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
+      <div className="container mx-auto px-4 sm:px-6 flex-1">
+        <div className="flex flex-col gap-6 max-w-full">
+          {/* Header */}
+          <div className="text-center mb-2">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black dark:text-white mb-3">
+              My Work
+            </h1>
+            <p className="text-sm sm:text-base text-black/60 dark:text-white/60 max-w-2xl mx-auto">
+              A collection of projects showcasing system design thinking, technical ownership, and end-to-end development capabilities.
+            </p>
+          </div>
+          
+          {/* Category filter */}
+          <div className="flex justify-center mb-2">
+            <CategoryFilter
+              categories={categories}
+              activeCategory={activeCategory}
+              onCategoryChange={setActiveCategory}
+            />
+          </div>
+          
+          {/* Project carousel container with navigation */}
+          <div className="relative flex items-center gap-4 lg:gap-6">
+            {/* Left arrow - Desktop */}
+            {filteredProjects.length > 1 && (
+              <Button
+                onClick={handlePrevious}
+                variant="outline"
+                size="icon"
+                className="hidden lg:flex flex-shrink-0 w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-[#f1f5f9] dark:bg-[#27272c] text-accent hover:bg-accent hover:text-primary dark:hover:text-accent border-2 border-accent shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-110"
+                aria-label="Previous project"
+              >
+                <FiChevronLeft className="h-6 w-6 xl:h-7 xl:w-7" />
+              </Button>
+            )}
+
+            {/* Project display with AnimatePresence for smooth transitions */}
+            <div
+              className="relative overflow-hidden w-full flex-1"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.div
+                  key={currentProjectIndex}
+                  custom={direction}
+                  variants={variants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  transition={{
+                    x: { type: "spring", stiffness: 200, damping: 25 },
+                    opacity: { duration: 0.3 },
+                  }}
                 >
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] flex justify-center items-center group rounded-full bg-black/5 dark:bg-white/5 transition-transform duration-200 ease-in-out transform hover:scale-105 will-change-transform">
-                        <BsArrowUpRight className="text-black dark:text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-                <Link
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className="w-[70px] h-[70px] flex justify-center items-center group rounded-full bg-black/5 dark:bg-white/5 transition-transform duration-200 ease-in-out transform hover:scale-105 will-change-transform">
-                        <BsGithub className="text-black dark:text-white text-3xl group-hover:text-accent" />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Github repository</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-              </div>
+                  <ProjectSection 
+                    project={filteredProjects[currentProjectIndex]} 
+                    index={currentProjectIndex}
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
+
+            {/* Right arrow - Desktop */}
+            {filteredProjects.length > 1 && (
+              <Button
+                onClick={handleNext}
+                variant="outline"
+                size="icon"
+                className="hidden lg:flex flex-shrink-0 w-12 h-12 xl:w-14 xl:h-14 rounded-full bg-[#f1f5f9] dark:bg-[#27272c] text-accent hover:bg-accent hover:text-primary dark:hover:text-accent border-2 border-accent shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-110"
+                aria-label="Next project"
+              >
+                <FiChevronRight className="h-6 w-6 xl:h-7 xl:w-7" />
+              </Button>
+            )}
           </div>
 
-          <div className="w-full xl:w-[50%]">
-            <div className="xl:h-[520px] mb-12 relative">
-              <div className="h-[460px] relative group flex justify-center items-center bg-black/5 dark:bg-white/5 rounded-lg overflow-hidden">
-                <AnimatePresence initial={false} custom={direction}>
-                  <motion.div
-                    key={currentIndex}
-                    custom={direction}
-                    initial={{ x: direction * 300, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: direction * -300, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="absolute inset-0"
-                  >
-                    <div className="absolute inset-0 bg-black/10 dark:bg-white/10 z-10 rounded-lg"></div>
-                    <div className="relative w-full h-full rounded-lg overflow-hidden backdrop-blur-sm">
-                      <Image
-                        src={project.image}
-                        fill
-                        sizes="(min-width: 1024px) 100vw, 50vw"
-                        className="object-cover rounded-lg transition-opacity duration-500 ease-in-out"
-                        alt={project.title}
-                        priority
-                        placeholder="blur"
-                        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg=="
-                      />
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
+          {/* Project counter and navigation dots */}
+          {filteredProjects.length > 0 && (
+            <div className="flex flex-col items-center gap-3 mt-6 mb-6">
+              {/* Counter */}
+              <div className="text-sm text-black/60 dark:text-white/60 font-medium">
+                Project {currentProjectIndex + 1} of {filteredProjects.length}
               </div>
-              <div
-                className="flex gap-2 absolute xl:right-0 xl:left-auto xl:bottom-0 z-20 w-auto xl:justify-end
-                              left-0 right-0 top-1/2 -translate-y-1/2 justify-between px-4 xl:px-0 xl:translate-x-0 xl:translate-y-0 xl:top-auto"
-              >
-                <button
-                  onClick={prevProject}
-                  className="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center rounded-full transition-all"
-                >
-                  ←
-                </button>
-                <button
-                  onClick={nextProject}
-                  className="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center rounded-full transition-all"
-                >
-                  →
-                </button>
+
+              {/* Navigation dots */}
+              <div className="flex gap-2">
+                {filteredProjects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setDirection(index > currentProjectIndex ? 1 : -1);
+                      setCurrentProjectIndex(index);
+                    }}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentProjectIndex
+                        ? "w-8 bg-accent"
+                        : "w-2 bg-black/20 dark:bg-white/20 hover:bg-accent/50"
+                    }`}
+                    aria-label={`Go to project ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              {/* Mobile navigation buttons */}
+              {filteredProjects.length > 1 && (
+                <div className="flex lg:hidden gap-3">
+                  <Button
+                    onClick={handlePrevious}
+                    variant="outline"
+                    size="default"
+                    className="flex-1 bg-[#f1f5f9] dark:bg-[#27272c] text-accent hover:bg-accent hover:text-primary dark:hover:text-primary border-2 border-accent transition-all duration-500"
+                  >
+                    <FiChevronLeft className="h-5 w-5 mr-2" />
+                    Previous
+                  </Button>
+                  <Button
+                    onClick={handleNext}
+                    variant="outline"
+                    size="default"
+                    className="flex-1 bg-[#f1f5f9] dark:bg-[#27272c] text-accent hover:bg-accent hover:text-primary dark:hover:text-primary border-2 border-accent transition-all duration-500"
+                  >
+                    Next
+                    <FiChevronRight className="h-5 w-5 ml-2" />
+                  </Button>
+                </div>
+              )}
+
+              {/* Swipe hint for mobile */}
+              <div className="lg:hidden text-xs text-black/40 dark:text-white/40">
+                Swipe left or right to navigate
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </motion.section>

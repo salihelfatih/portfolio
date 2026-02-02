@@ -1,26 +1,15 @@
 "use client";
 
-import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { FiDownload } from "react-icons/fi";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 // components
-import Social from "@/components/Social";
-import Photo from "@/components/Photo";
-import Stats from "@/components/Stats";
+import Social from "@/components/shared/Social";
+import Photo from "@/components/shared/Photo";
+import Stats from "@/components/shared/Stats";
 
 const Home = () => {
-  const handleDownload = useCallback(() => {
-    const resumeUrl = "/assets/resume/Salih_Salih_Resume.pdf";
-    const link = document.createElement("a");
-    link.href = resumeUrl;
-    link.download = "Salih_Salih_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }, []);
-
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -28,47 +17,50 @@ const Home = () => {
         opacity: 1,
         transition: { delay: 2, duration: 0.4, ease: "easeIn" },
       }}
-      className="h-full"
+      className="flex flex-col py-4 xl:py-6 space-y-6 xl:space-y-8"
     >
-      <div className="container mx-auto h-full">
-        <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
+      {/* Hero section with subtitle, heading, and photo */}
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex flex-col xl:flex-row items-center justify-center xl:justify-between w-full gap-8 xl:gap-10">
           {/* text */}
-          <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl">Software Developer</span>
-            <h1 className="h1 mb-6">
-              Hello, I&apos;m <br /> <span className="text-accent">Salih!</span>
+          <div className="text-center xl:text-left order-2 xl:order-none max-w-full xl:max-w-[600px]">
+            <span className="text-base sm:text-lg md:text-xl mb-6 xl:mb-8 block">Full-stack developer, visual artist & AI specialist</span>
+            <h1 className="h1">
+              Building technology that empowers people
             </h1>
-            <p className="max-w-[500px] mb-9 opacity-80">
-              I specialize in creating top-notch digital experiences, leveraging
-              a diverse skill set in programming languages and cutting-edge
-              technologies.
-            </p>
-            {/* btn and socials */}
-            <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant="outline"
-                size="lg"
-                className="uppercase flex items-center gap-2 dark:text-white text-black"
-                onClick={handleDownload}
-              >
-                <span>Download Resume</span>
-                <FiDownload className="text-xl" />
-              </Button>
-              <div className="mb-8 xl:mb-0">
-                <Social
-                  containerStyles="flex gap-6"
-                  iconStyles="w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500 dark:text-white text-black"
-                />
-              </div>
-            </div>
           </div>
           {/* photo */}
-          <div className="order-1 xl:order-none mb-8 xl:mb-0">
-            <Photo />
+          <div className="order-1 xl:order-none">
+            <Photo src="/assets/photos/home.JPEG" alt="Salih profile photo" priority />
           </div>
         </div>
       </div>
-      <Stats />
+
+      {/* Buttons and socials */}
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex flex-col xl:flex-row items-center justify-center xl:justify-start gap-6 xl:gap-8 max-w-full xl:max-w-[600px] mx-auto xl:mx-0">
+          <Link href="/work">
+            <Button
+              variant="outline"
+              size="lg"
+              className="uppercase flex items-center gap-2 dark:text-white text-black w-full sm:w-auto"
+            >
+              <span>View my work</span>
+            </Button>
+          </Link>
+          <div>
+            <Social
+              containerStyles="flex gap-4 sm:gap-6"
+              iconStyles="w-10 h-10 sm:w-9 sm:h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500 dark:text-white text-black"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Stats - with extra top margin */}
+      <div className="mt-auto pt-8 xl:pt-12">
+        <Stats />
+      </div>
     </motion.section>
   );
 };

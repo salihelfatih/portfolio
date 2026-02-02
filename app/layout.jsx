@@ -1,7 +1,8 @@
 import { JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -16,11 +17,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={jetbrainsMono.variable}>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
+      <body className={`${jetbrainsMono.variable} flex flex-col min-h-screen overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />
-          {children}
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

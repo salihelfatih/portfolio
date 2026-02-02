@@ -6,9 +6,11 @@ const useStore = create(
     (set) => ({
       selectedService: "",
       setSelectedService: (service) => set({ selectedService: service }),
+      animationsEnabled: true,
+      setAnimationsEnabled: (enabled) => set({ animationsEnabled: enabled }),
     }),
     {
-      name: "service-storage",
+      name: "portfolio-storage",
     }
   )
 );
