@@ -35,11 +35,14 @@ const Header = () => {
         <div className="container mx-auto py-4 sm:py-6 xl:py-8 px-4 sm:px-6">
           <div className="flex justify-between items-center">
             <Link href="/">
-              <h1 className="text-2xl sm:text-3xl xl:text-4xl font-semibold text-gray-800 dark:text-white">
-                Salih
-                <span ref={dotRef} className="text-accent">
-                  .
-                </span>
+              <h1 className="inline-flex items-baseline text-2xl sm:text-3xl xl:text-4xl font-semibold text-gray-800 dark:text-white">
+                <span>Salih</span>
+                <span
+                  ref={dotRef}
+                  aria-hidden="true"
+                  data-transition-origin="logo-dot"
+                  className="ml-1 inline-block h-[0.24em] w-[0.24em] shrink-0 translate-y-[0.04em] rounded-full bg-accent shadow-[0_0_14px_rgba(99,102,241,0.35)]"
+                />
               </h1>
             </Link>
             <div className="hidden lg:flex items-center gap-6 xl:gap-8">

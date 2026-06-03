@@ -15,9 +15,10 @@ import { Switch } from "@/components/ui/switch";
 import useStore from "@/hooks/useStore";
 
 const Settings = () => {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const { animationsEnabled, setAnimationsEnabled } = useStore();
   const [mounted, setMounted] = useState(false);
+  const isDarkMode = resolvedTheme === "dark";
 
   useEffect(() => {
     setMounted(true);
@@ -49,7 +50,7 @@ const Settings = () => {
           <div className="flex items-center justify-between gap-4">
             <div className="space-y-0.5 flex-1 min-w-0">
               <label htmlFor="theme" className="text-sm font-medium flex items-center gap-2">
-                {theme === "dark" ? (
+                {isDarkMode ? (
                   <FiMoon className="w-4 h-4 text-accent flex-shrink-0" />
                 ) : (
                   <FiSun className="w-4 h-4 text-accent flex-shrink-0" />
@@ -63,7 +64,7 @@ const Settings = () => {
             <div className="flex items-center gap-2 flex-shrink-0">
               <Switch
                 id="theme"
-                checked={theme === "dark"}
+                checked={isDarkMode}
                 onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
               />
             </div>

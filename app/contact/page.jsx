@@ -140,8 +140,8 @@ const Contact = () => {
     {
       icon: <FaEnvelope />,
       title: "Email",
-      description: "salih.elfatih@hey.com",
-      href: "mailto:salih.elfatih@hey.com",
+      description: "salih.elfatih@proton.me",
+      href: "mailto:salih.elfatih@proton.me",
     },
     {
       icon: <FaLinkedinIn />,
@@ -237,6 +237,18 @@ const Contact = () => {
                     <SelectContent className="custom-input">
                       <SelectGroup>
                         <SelectLabel>Select a topic</SelectLabel>
+                        <SelectItem value="Web Development">
+                          Web Development
+                        </SelectItem>
+                        <SelectItem value="Mobile Development">
+                          Mobile Development
+                        </SelectItem>
+                        <SelectItem value="Product Design">
+                          Product Design
+                        </SelectItem>
+                        <SelectItem value="Branding">
+                          Branding
+                        </SelectItem>
                         <SelectItem value="General Inquiry">
                           General Inquiry
                         </SelectItem>

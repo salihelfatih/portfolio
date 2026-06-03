@@ -25,6 +25,26 @@ export interface NavItem {
 // Projects for the Work section - using your exact content
 export const projects: Project[] = [
   {
+    id: 'cella',
+    title: 'Cella',
+    oneLiner: 'Deterministic food intelligence core for safer, smarter food systems',
+    whatItDoes: 'Powers shared food intelligence across sNAKr and Takia by assessing spoilage risk, inventory completeness and safety priorities. Cella uses rule-based logic to help households and community food systems reduce waste, plan better and make clearer food decisions under real-world constraints.',
+    myRole: 'Designed the core system architecture, product philosophy and safety-first intelligence model. Defined the shared modules, guardrails, AI personality boundaries and documentation structure before moving into implementation.',
+    keyDecisions: [
+      'Separated deterministic food safety logic from LLM-generated explanations to ensure risk levels cannot be softened or overridden',
+      'Created a shared intelligence layer used by both household and community food systems while preserving distinct product experiences',
+      'Defined three foundational modules: ShelfSense for spoilage assessment, StockView for inventory awareness and SafeKeep for safety rules',
+      'Established strict guardrails around food safety, medical claims and AI behavior to keep the system explainable and trustworthy'
+    ],
+    stack: ['Python', 'FastAPI', 'Pydantic', 'LLM APIs', 'Rule-Based Systems'],
+    links: {
+      demo: 'https://cella-demo.netlify.app',
+      github: 'https://github.com/salihelfatih/cella'
+    },
+    category: 'AI & ML',
+    image: '/assets/work/Cella.png'
+  },
+  {
     id: 'chapters',
     title: 'Chapters',
     oneLiner: 'Rate-limited social platform for thoughtful writers and readers',
@@ -61,6 +81,25 @@ export const projects: Project[] = [
     },
     category: 'AI & ML',
     image: '/assets/work/fLOKr.png'
+  },
+  {
+    id: 'lexi',
+    title: 'Lexi',
+    oneLiner: 'AI-powered legal document understanding system',
+    whatItDoes: 'Helps users understand legal documents like leases in plain English before signing. Extracts key details, highlights potential risks, and provides source-grounded explanations to reduce confusion around dense legal paperwork.',
+    myRole: 'Designed and built the frontend demo, system architecture, and technical documentation. Scoped the backend pipeline for OCR, document classification, clause parsing, RAG-grounded summaries, and risk intelligence.',
+    keyDecisions: [
+      'Designed Lexi as a privacy-first legal information tool with explicit consent, ephemeral processing, and clear "not legal advice" boundaries',
+      'Planned a hybrid AI architecture combining OCR, Hugging Face/PyTorch classification, RAG pipelines, and LLM-generated explanations grounded in source clauses',
+      'Created the RiskSense direction to prioritize high-attention clauses through severity, confidence scoring, and future analytics for individuals and organizations'
+    ],
+    stack: ['Next.js', 'FastAPI', 'Python', 'PyTorch', 'Hugging Face', 'PostgreSQL', 'RAG', 'LLM'],
+    links: {
+      demo: 'https://lexi-demo.netlify.app',
+      github: 'https://github.com/salihelfatih/lexi'
+    },
+    category: 'AI & ML',
+    image: '/assets/work/Lexi.png'
   },
   {
     id: 'makana',
@@ -141,15 +180,16 @@ export const projects: Project[] = [
   {
     id: 'seshio',
     title: 'Seshio',
-    oneLiner: 'AI-powered session notes and insights for therapists',
-    whatItDoes: 'Helps therapists capture session notes quickly and generate insights using AI. Reduces administrative burden while maintaining client privacy and professional standards.',
-    myRole: 'Built the full-stack application including AI integration, note-taking interface, and secure data storage.',
+    oneLiner: 'AI-powered platform for making sense of what you learn and studying smarter',
+    whatItDoes: 'Seshio helps learners turn raw materials into real understanding. Upload notes, ask questions, and engage in grounded conversations with AI that stays anchored to your content. It naturally generates summaries, quizzes, and study sessions, making learning an active, iterative process instead of passive review.',
+    myRole: 'Built the full-stack platform including retrieval-augmented AI workflows, interactive study experiences, and scalable data pipelines for processing and embedding user materials.',
     keyDecisions: [
-      'Implemented end-to-end encryption for all client data',
-      'Used AI to suggest themes and patterns across sessions while keeping therapist in control',
-      'Designed offline-first architecture for reliability in various practice settings'
+      'Designed a retrieval-augmented system to ensure AI responses are grounded in user-provided materials, not hallucinations',
+      'Focused on active learning by generating quizzes, summaries, and study flows instead of static outputs',
+      'Implemented a notebook-based architecture to organize knowledge and support contextual learning',
+      'Built a privacy-first system with secure storage and controlled data flow'
     ],
-    stack: ['Next.js', 'FastAPI', 'PostgreSQL', 'OpenAI API'],
+    stack: ['Next.js', 'FastAPI', 'PostgreSQL', 'Gemini API'],
     links: {
       demo: 'https://seshio-demo.netlify.app',
       github: 'https://github.com/sakialabs/seshio'
@@ -262,6 +302,10 @@ export const navItems: NavItem[] = [
   {
     label: 'About',
     href: '/about'
+  },
+  {
+    label: 'Services',
+    href: '/services'
   },
   {
     label: 'Work',

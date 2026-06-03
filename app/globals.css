@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 :root {
+  --font-jetbrainsMono: "JetBrains Mono", "Fira Code", "SFMono-Regular",
+    Consolas, "Liberation Mono", monospace;
   --input-bg: #ffffff;
   --input-text: #000000;
   --input-border: #e5e7eb;
@@ -23,8 +25,45 @@
 }
 
 @layer base {
+  html {
+    background-color: #e2e8f0;
+    color: #000000;
+    transition: background-color 350ms ease, color 350ms ease;
+  }
+
   body {
-    @apply font-primary leading-loose transition-colors duration-300;
+    @apply font-primary leading-loose;
+    transition: background-color 350ms ease, color 350ms ease;
+  }
+
+  :where(
+      header,
+      footer,
+      main,
+      section,
+      article,
+      nav,
+      aside,
+      div,
+      button,
+      a,
+      p,
+      span,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      label,
+      input,
+      textarea,
+      select,
+      svg
+    ) {
+    transition-property: background-color, border-color, color, fill, stroke, box-shadow;
+    transition-duration: 300ms;
+    transition-timing-function: ease;
   }
 
   /* Dark mode styles */
@@ -49,6 +88,10 @@
     @apply text-[18px] sm:text-[20px] md:text-[22px] xl:text-[24px] leading-[1.1] font-semibold;
   }
   .text-outline {
+    -webkit-text-stroke: 1px #000000;
+  }
+
+  .dark .text-outline {
     -webkit-text-stroke: 1px #ffffff;
   }
 
@@ -72,6 +115,38 @@
   .prevent-autofill:-webkit-autofill:active {
     -webkit-text-fill-color: inherit !important;
     -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html,
+    body,
+    :where(
+        header,
+        footer,
+        main,
+        section,
+        article,
+        nav,
+        aside,
+        div,
+        button,
+        a,
+        p,
+        span,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        label,
+        input,
+        textarea,
+        select,
+        svg
+      ) {
+      transition-duration: 1ms;
+    }
   }
 }
 

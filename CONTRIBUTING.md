@@ -1,305 +1,147 @@
-# Contributing to Portfolio
+# Using This Portfolio As A Starter
 
-Thank you for your interest in contributing! This document provides guidelines and instructions for contributing to this portfolio project.
+This repository is my personal portfolio, but it can also be used as a reference or starting point for your own site. The best way to use it is to clone it, replace the content with your own story, and adapt the design until it feels like you.
 
-## 🚀 Getting Started
+This is not really a traditional open source contribution target. Pull requests that personalize my live portfolio probably are not useful, but questions, bug reports, and thoughtful improvements are welcome.
+
+## Quick Start
 
 ### Prerequisites
 
 - Node.js 18 or higher
-- npm, yarn, pnpm, or bun
+- npm
 - Git
 
-### Setup
+### Clone And Run
 
-1. **Fork the repository**
-   ```bash
-   # Click the "Fork" button on GitHub
-   ```
+```bash
+git clone https://github.com/salihelfatih/portfolio.git
+cd portfolio
+npm install
+npm run dev
+```
 
-2. **Clone your fork**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/portfolio.git
-   cd portfolio
-   ```
+Open http://localhost:3000 in your browser.
 
-3. **Run the setup script**
-   ```bash
-   # Unix/Linux/Mac
-   chmod +x scripts/setup.sh
-   ./scripts/setup.sh
+If you want your own copy on GitHub, fork the repo first or create a fresh repository after cloning.
 
-   # Windows PowerShell
-   .\scripts\setup.ps1
-   ```
+## Make It Yours
 
-4. **Create a branch**
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
+Start with the content before changing the code too deeply. A portfolio feels strongest when the words, projects, and images are specific to the person behind it.
 
-## 📝 Development Workflow
+### Project Data
 
-### Making Changes
+Most Work page content lives in:
 
-1. **Make your changes** in your feature branch
-2. **Test your changes** using the test runner
-3. **Ensure build succeeds**
-   ```bash
-   npm run build
-   ```
-4. **Lint your code**
-   ```bash
-   npm run lint
-   ```
+```text
+lib/data.ts
+```
 
-### Testing
+Update each project with your own:
 
-Before submitting a pull request, run all tests:
+- Title and one-line summary
+- What it does
+- Your role
+- Key decisions
+- Tech stack
+- Demo and GitHub links
+- Category and screenshot
 
-1. **Open the test runner**
-   ```bash
-   open scripts/test-runner.html
-   ```
+### Images
 
-2. **Run all test suites:**
-   - Home page preservation tests
-   - Navigation and routing tests
-   - Responsive behavior tests
-   - Accessibility tests
+Replace the existing image assets with your own:
 
-3. **Verify build**
-   ```bash
-   npm run build
-   ```
+```text
+public/assets/photos/
+public/assets/work/
+public/assets/resume/
+```
 
-## 🎨 Code Style
+Keep filenames consistent with `lib/data.ts`, or update the image paths there.
 
-### General Guidelines
+### Pages
 
-- Use meaningful variable and function names
-- Write comments for complex logic
-- Follow existing code patterns
-- Keep functions small and focused
+The main routes are:
 
-### React/Next.js Specific
+```text
+app/page.jsx
+app/about/page.jsx
+app/work/page.jsx
+app/contact/page.jsx
+app/resume/page.jsx
+app/services/page.jsx
+```
 
-- Use functional components with hooks
-- Prefer `const` over `let` when possible
-- Use TypeScript types when available
-- Follow Next.js 14 App Router conventions
+Use these as editing entry points for copy, layout, and page-specific content.
+
+### Shared Components
+
+Reusable UI pieces live in:
+
+```text
+components/
+components/features/
+components/layout/
+components/shared/
+components/ui/
+```
+
+For small changes, edit the page first. Reach for shared components when the same pattern appears in more than one place.
 
 ### Styling
 
-- Use Tailwind CSS utility classes
-- Follow existing design system patterns
-- Maintain responsive design (mobile-first)
-- Support dark mode for all new components
+The project uses Tailwind CSS with a small design system:
 
-### File Organization
-
-```
-app/              # Next.js pages (App Router)
-components/       # React components
-lib/              # Utilities and data
-actions/          # Server actions
-tests/            # Test suites
-scripts/          # Automation scripts
+```text
+app/globals.css
+tailwind.config.js
+components/ui/
 ```
 
-## 🧪 Testing Guidelines
+Good first customizations:
 
-### Writing Tests
+- Accent color
+- Profile images
+- Project screenshots
+- Button and badge styling
+- Dark mode details
+- Page copy and spacing
 
-When adding new features, include tests:
+## Contact Form Setup
 
-1. **Browser-based tests** for UI components
-2. **Manual test scripts** in `tests/` directory
-3. **Clear documentation** in test files
+The contact form uses Resend. To enable it locally or in production, create `.env.local`:
 
-### Test Structure
-
-```javascript
-/**
- * Feature Test Suite
- * 
- * Purpose: Brief description
- * Requirements: List requirements validated
- * 
- * Usage:
- * 1. Step-by-step instructions
- */
-
-const TestSuite = {
-  results: { passed: [], failed: [], warnings: [] },
-  
-  async runAllTests() {
-    // Test implementation
-  },
-  
-  displayResults() {
-    // Results display
-  }
-};
-
-function testFeature() {
-  TestSuite.runAllTests();
-}
+```env
+RESEND_API_KEY=your_resend_api_key
+RESEND_FROM_EMAIL=your_verified_sender@example.com
+RESEND_TO_EMAIL=your_destination_email@example.com
 ```
 
-## 📚 Documentation
+If you do not want a working contact form, you can replace the form with links to email, LinkedIn, GitHub, or another booking/contact tool.
 
-### Updating Documentation
+## Useful Commands
 
-When making changes, update relevant documentation:
-
-- **README.md** - Main project documentation
-- **tests/README.md** - Testing documentation
-- **docs/CHANGELOG.md** - Version history
-- **README.md** - Project overview and setup
-- **Component comments** - JSDoc for new components
-
-### Documentation Style
-
-- Use clear, concise language
-- Include code examples
-- Add usage instructions
-- Provide context and rationale
-
-## 🔄 Pull Request Process
-
-### Before Submitting
-
-1. ✅ All tests pass
-2. ✅ Build succeeds
-3. ✅ Lint passes
-4. ✅ Documentation updated
-5. ✅ Commits are clean and descriptive
-
-### Submitting
-
-1. **Push your branch**
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-2. **Create Pull Request** on GitHub
-
-3. **Fill out PR template:**
-   - Description of changes
-   - Related issues
-   - Testing performed
-   - Screenshots (if UI changes)
-
-4. **Wait for review**
-   - Address feedback
-   - Make requested changes
-   - Push updates to same branch
-
-### PR Title Format
-
-```
-type: Brief description
-
-Examples:
-feat: Add dark mode toggle to navigation
-fix: Resolve mobile menu overflow issue
-docs: Update testing documentation
-style: Improve button hover animations
-test: Add responsive layout tests
+```bash
+npm run dev
+npm run build
+npm run lint
 ```
 
-### Commit Message Format
+Run `npm run build` before deploying to catch broken imports, missing assets, and build-time errors.
 
-```
-type: Brief description
+## Deployment
 
-Detailed explanation of changes (if needed)
+Vercel is the easiest deployment path for this project:
 
-- Bullet points for multiple changes
-- Reference issues: Fixes #123
+1. Push your version to GitHub.
+2. Import the repo in Vercel.
+3. Add the Resend environment variables if you use the contact form.
+4. Deploy.
 
-Types: feat, fix, docs, style, refactor, test, chore
-```
+Netlify, Railway, and other Next.js-friendly hosts can work too, but Vercel is the default path.
 
-## 🐛 Reporting Issues
+## A Note On Reuse
 
-### Bug Reports
+You are welcome to study the structure, borrow patterns, and build your own version from it. Please replace my personal bio, project descriptions, screenshots, resume, and identity details before publishing your site.
 
-Include:
-- Clear description of the issue
-- Steps to reproduce
-- Expected behavior
-- Actual behavior
-- Screenshots (if applicable)
-- Browser/OS information
-- Console errors (if any)
-
-### Feature Requests
-
-Include:
-- Clear description of the feature
-- Use case and benefits
-- Proposed implementation (optional)
-- Examples or mockups (optional)
-
-## 💡 Best Practices
-
-### Performance
-
-- Optimize images (use Next.js Image component)
-- Minimize bundle size
-- Use lazy loading where appropriate
-- Avoid unnecessary re-renders
-
-### Accessibility
-
-- Use semantic HTML
-- Include ARIA labels
-- Ensure keyboard navigation
-- Maintain color contrast
-- Test with screen readers
-
-### Responsive Design
-
-- Mobile-first approach
-- Test at all breakpoints
-- Touch-friendly targets (44x44px minimum)
-- Smooth animations across devices
-
-### Security
-
-- Never commit sensitive data
-- Use environment variables
-- Validate user inputs
-- Follow Next.js security best practices
-
-## 📞 Getting Help
-
-### Resources
-
-- **Documentation:** See README.md and tests/README.md
-- **Specs:** Check `docs/` directory (requirements.md, design.md, tasks.md, CHANGELOG.md)
-- **Issues:** Search existing issues on GitHub
-- **Discussions:** Start a discussion on GitHub
-
-### Contact
-
-- **GitHub Issues:** For bugs and feature requests
-- **GitHub Discussions:** For questions and ideas
-- **Email:** For private inquiries
-
-## 🙏 Recognition
-
-Contributors will be recognized in:
-- README.md acknowledgments section
-- CHANGELOG.md for significant contributions
-- GitHub contributors page
-
-## 📄 License
-
-By contributing, you agree that your contributions will be licensed under the same license as the project (MIT License).
-
----
-
-Thank you for contributing to make this portfolio better! 🎉
+Make it yours. That is the whole point.

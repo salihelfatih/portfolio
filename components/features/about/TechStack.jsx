@@ -6,8 +6,12 @@ import {
   SiPython, 
   SiReact, 
   SiNextdotjs, 
+  SiShadcnui,
+  SiRadixui,
+  SiFramer,
   SiDjango, 
   SiFastapi, 
+  SiPydantic,
   SiPostgresql, 
   SiSupabase, 
   SiTailwindcss,
@@ -16,10 +20,14 @@ import {
   SiRedis,
   SiCelery,
   SiPytorch,
-  SiTensorflow,
-  SiScikitlearn
+  SiScikitlearn,
+  SiGooglegemini,
+  SiOpenai,
+  SiAnthropic,
+  SiGodotengine,
+  SiScrapy
 } from "react-icons/si";
-import { TbBrandOpenai } from "react-icons/tb";
+import { TbBrain, TbFileSearch } from "react-icons/tb";
 import { HiSparkles } from "react-icons/hi2";
 import {
   Accordion,
@@ -51,6 +59,9 @@ export default function TechStack() {
         { name: "Next.js", icon: SiNextdotjs },
         { name: "React", icon: SiReact },
         { name: "React Native", icon: SiReact },
+        { name: "shadcn/ui", icon: SiShadcnui },
+        { name: "Radix UI", icon: SiRadixui },
+        { name: "Framer Motion", icon: SiFramer },
         { name: "Tailwind CSS", icon: SiTailwindcss },
       ]
     },
@@ -62,6 +73,7 @@ export default function TechStack() {
         { name: "Django", icon: SiDjango },
         { name: "FastAPI", icon: SiFastapi },
         { name: "Node.js", icon: SiNodedotjs },
+        { name: "Pydantic", icon: SiPydantic },
       ]
     },
     {
@@ -79,20 +91,26 @@ export default function TechStack() {
       id: "ai-ml",
       title: "AI & Machine Learning",
       skills: [
+        { name: "Gemini API", icon: SiGooglegemini },
         { name: "Hugging Face", icon: HiSparkles },
-        { name: "OpenAI API", icon: TbBrandOpenai },
+        { name: "Claude API", icon: SiAnthropic },
+        { name: "LLM APIs", icon: TbBrain },
+        { name: "OpenAI API", icon: SiOpenai },
         { name: "PyTorch", icon: SiPytorch },
+        { name: "RAG", icon: TbFileSearch },
         { name: "scikit-learn", icon: SiScikitlearn },
-        { name: "TensorFlow", icon: SiTensorflow },
       ]
     },
     {
       id: "devops",
-      title: "DevOps & Tools",
+      title: "AI Coding, DevOps & Tools",
       skills: [
+        { name: "Claude Code", icon: SiAnthropic },
+        { name: "Codex", icon: SiOpenai },
         { name: "Docker", icon: SiDocker },
-        { name: "Scrapy", icon: SiPython },
-        { name: "Tesseract OCR", icon: SiPython },
+        { name: "Godot", icon: SiGodotengine },
+        { name: "OCR / Tesseract", icon: TbFileSearch },
+        { name: "Scrapy", icon: SiScrapy },
       ]
     }
   ];
@@ -102,7 +120,7 @@ export default function TechStack() {
       <h2 className="text-2xl sm:text-3xl font-bold text-black dark:text-white mb-6">
         Tech Stack
       </h2>
-      <Accordion type="multiple" className="w-full">
+      <Accordion type="multiple" defaultValue={["languages"]} className="w-full">
         {techCategories.map((category) => (
           <AccordionItem key={category.id} value={category.id}>
             <AccordionTrigger className="hover:no-underline">

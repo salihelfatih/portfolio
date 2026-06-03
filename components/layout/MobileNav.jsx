@@ -27,9 +27,13 @@ const MobileNav = () => {
         <div className="mt-32 mb-20 text-center text-2xl">
           <button
             onClick={() => handleClick("/")}
-            className="text-4xl font-semibold text-accent"
+            className="inline-flex items-baseline text-4xl font-semibold text-accent"
           >
-            Salih<span className="text-accent">.</span>
+            <span>Salih</span>
+            <span
+              aria-hidden="true"
+              className="ml-1 inline-block h-[0.24em] w-[0.24em] shrink-0 translate-y-[0.04em] rounded-full bg-accent shadow-[0_0_14px_rgba(99,102,241,0.35)]"
+            />
           </button>
         </div>
         <nav className="flex flex-col justify-center items-center gap-8">

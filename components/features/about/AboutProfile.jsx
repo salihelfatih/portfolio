@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import ResumeModal from "@/components/features/resume/ResumeModal";
 
 /**
  * AboutProfile Component
@@ -25,11 +28,26 @@ export default function AboutProfile() {
         About Me
       </h2>
       <p className="text-base sm:text-lg text-black/70 dark:text-white/70 leading-relaxed mb-4">
-        I&apos;m a full-stack developer with a background in visual arts and software development. I build end-to-end systems that balance technical clarity, usability, and long-term maintainability.
+        I&apos;m a full-stack developer with a background in AI/ML, product design, and visual arts. I build practical, human-centered applications across AI tools, community platforms, food systems, career technology, study platforms, and smart living.
       </p>
-      <p className="text-base sm:text-lg text-black/70 dark:text-white/70 leading-relaxed">
-        These days, I&apos;m focused on building accessible, user-centered products and applying AI and automation where they genuinely reduce friction. I care about clean abstractions, thoughtful trade-offs, and code that holds up as systems grow.
+      <p className="text-base sm:text-lg text-black/70 dark:text-white/70 leading-relaxed mb-6">
+        Through Sakia Labs, I design and develop products with React, Next.js, TypeScript, Python, FastAPI, Django, PostgreSQL, Tailwind CSS, and AI-assisted workflows. I care about clean implementation, thoughtful product decisions, and useful technology that holds up in the real world.
       </p>
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <ResumeModal>
+          <Button className="w-full bg-accent text-white hover:bg-accent/90 sm:w-auto">
+            View resume
+          </Button>
+        </ResumeModal>
+        <Link href="/work">
+          <Button
+            variant="outline"
+            className="w-full border-accent text-accent hover:bg-accent hover:text-white sm:w-auto"
+          >
+            Explore work
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 }

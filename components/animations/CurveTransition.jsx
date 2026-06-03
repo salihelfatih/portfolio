@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { useEffect, useState, useRef } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import useStore from "@/hooks/useStore";
 
 const routes = {
@@ -15,9 +15,9 @@ const routes = {
 };
 
 const Curve = ({ dimensions, backgroundColor, position, routeName }) => {
-  const finalRadius = Math.sqrt(
-    dimensions.width * dimensions.width + dimensions.height * dimensions.height
-  );
+  const farthestX = Math.max(position.x, dimensions.width - position.x);
+  const farthestY = Math.max(position.y, dimensions.height - position.y);
+  const finalRadius = Math.hypot(farthestX, farthestY);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-40">
@@ -74,40 +74,48 @@ const CurveTransition = ({ backgroundColor = "#6366f1", startRef }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const lastPathname = useRef(pathname);
 
-  useEffect(() => {
-    function updateDimensions() {
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+  const getTransitionOrigin = useCallback(() => {
+    if (!startRef?.current) {
+      return {
+        x: typeof window === "undefined" ? 0 : window.innerWidth / 2,
+        y: 0,
+      };
     }
 
-    function updatePosition() {
-      if (startRef?.current) {
-        const rect = startRef.current.getBoundingClientRect();
-        // Get the exact center of the dot element
-        setPosition({
-          x: rect.left + rect.width / 2,
-          y: rect.top + rect.height / 2,
-        });
-      }
-    }
+    const rect = startRef.current.getBoundingClientRect();
 
-    updateDimensions();
-    updatePosition();
-
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("resize", updatePosition);
-    window.addEventListener("scroll", updatePosition);
-    return () => {
-      window.removeEventListener("resize", updateDimensions);
-      window.removeEventListener("resize", updatePosition);
-      window.removeEventListener("scroll", updatePosition);
+    return {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2,
     };
   }, [startRef]);
 
   useEffect(() => {
+    function updateTransitionAnchor() {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+      setPosition(getTransitionOrigin());
+    }
+
+    updateTransitionAnchor();
+
+    window.addEventListener("resize", updateTransitionAnchor);
+    window.addEventListener("scroll", updateTransitionAnchor);
+    return () => {
+      window.removeEventListener("resize", updateTransitionAnchor);
+      window.removeEventListener("scroll", updateTransitionAnchor);
+    };
+  }, [getTransitionOrigin]);
+
+  useEffect(() => {
     if (pathname !== lastPathname.current && animationsEnabled) {
+      setDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+      setPosition(getTransitionOrigin());
       setIsAnimating(true);
       const timer = setTimeout(() => setIsAnimating(false), 2000);
       lastPathname.current = pathname;
@@ -115,7 +123,7 @@ const CurveTransition = ({ backgroundColor = "#6366f1", startRef }) => {
     } else {
       lastPathname.current = pathname;
     }
-  }, [pathname, animationsEnabled]);
+  }, [pathname, animationsEnabled, getTransitionOrigin]);
 
   if (!animationsEnabled) return null;
 

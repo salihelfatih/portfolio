@@ -12,21 +12,21 @@ All changes maintain the existing design system built with Next.js 14+, Tailwind
 
 ```
 app/
-├── not-found.jsx                 # Custom 404 page (new)
-├── about/page.jsx                # Restructured About page (modified)
-├── work/page.jsx                 # Redesigned Work page (modified)
-└── contact/page.jsx              # Streamlined Contact page (modified)
+├── not-found.jsx                 # Custom 404 page
+├── about/page.jsx                # Restructured About page
+├── work/page.jsx                 # Redesigned Work page
+└── contact/page.jsx              # Streamlined Contact page
 
 components/
-├── AboutProfile.jsx              # Left column profile section (new)
-├── AboutCards.jsx                # Right column cards section (new)
-├── ExperienceAccordion.jsx       # Experience accordion (new)
-├── EducationAccordion.jsx        # Education accordion (new)
-├── ProjectSection.jsx            # Individual project section (new)
-└── CategoryFilter.jsx            # Updated filter component (modified)
+├── AboutProfile.jsx              # Left column profile section
+├── AboutCards.jsx                # Right column cards section
+├── ExperienceAccordion.jsx       # Experience accordion
+├── EducationAccordion.jsx        # Education accordion
+├── ProjectSection.jsx            # Individual project section
+└── CategoryFilter.jsx            # Updated filter component
 
 lib/
-└── data.ts                       # Updated project categories (modified)
+└── data.ts                       # Updated project categories
 ```
 
 ## Components

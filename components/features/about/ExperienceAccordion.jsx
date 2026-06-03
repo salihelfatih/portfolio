@@ -11,24 +11,35 @@ export default function ExperienceAccordion() {
   const experiences = [
     {
       id: "exp-1",
-      title: "Founder & Lead Developer",
+      title: "Founder & Full Stack Developer",
       company: "Sakia Labs",
       year: "2023 - Present",
       responsibilities: [
-        "Design and deploy full-stack web and mobile platforms for community-focused projects",
-        "Lead technical architecture decisions and system design for 10+ production applications",
-        "Mentor junior developers and contribute to open-source initiatives"
+        "Design and build human-centered products across AI tools, food systems, career technology, study platforms, and community infrastructure",
+        "Lead technical architecture across full-stack applications using React, Next.js, TypeScript, Python, FastAPI, Django, PostgreSQL, and Tailwind CSS",
+        "Shape product direction, documentation, and AI-assisted workflows from early concept through implementation"
       ]
     },
     {
       id: "exp-2",
-      title: "Full-Stack Developer",
-      company: "Freelance",
-      year: "2020 - 2023",
+      title: "AI/ML Freelance Intern",
+      company: "Fanshawe College",
+      year: "Winter 2026",
       responsibilities: [
-        "Built custom web applications for clients across various industries",
-        "Implemented responsive designs and ensured cross-browser compatibility",
-        "Collaborated with designers and stakeholders to deliver user-centered solutions"
+        "Completed an AI/ML-focused freelance internship connected to Fanshawe College",
+        "Applied software development, data handling, and machine-learning concepts to practical project work",
+        "Strengthened the bridge between model behavior, user experience, and clear technical communication"
+      ]
+    },
+    {
+      id: "exp-3",
+      title: "Full Stack Developer Intern",
+      company: "Boardwalk Insurance",
+      year: "Fall 2022",
+      responsibilities: [
+        "Contributed to full-stack development work in a professional software environment",
+        "Built and maintained user-facing features with attention to usability and reliability",
+        "Collaborated across technical and stakeholder needs during internship delivery"
       ]
     }
   ];

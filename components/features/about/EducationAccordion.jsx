@@ -12,12 +12,12 @@ export default function EducationAccordion() {
     {
       id: "edu-1",
       institution: "Fanshawe College",
-      degree: "Graduate Certificate in AI & Machine Learning",
+      degree: "Artificial Intelligence and Machine Learning, Graduate Certificate",
       year: "2026",
       details: [
-        "Graduated with advanced study in machine learning algorithms and neural networks",
-        "Currently completing freelance co-op placement",
-        "Capstone project: AI-powered resume analysis system"
+        "Completed graduate certificate studies in artificial intelligence and machine learning",
+        "Built on a software development foundation with applied AI/ML workflows, model evaluation, and practical implementation",
+        "Focused on connecting machine-learning concepts to useful, human-centered software products"
       ]
     },
     {
